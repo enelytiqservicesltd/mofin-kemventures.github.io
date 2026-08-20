@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mofin-Kem Ventures | Quality Fashion, Everyday Essentials, and Curated Finds — All in One Place</title>
+    <link rel="icon" type="<link rel="icon" type="image/png" href="images/Favicon.png">
+    <style>
+        /* CSS Reset & Variables */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        :root {
+            --primary-color: #1a1a1a;
+            --accent-color: #d4af37; /* Gold accent for elegance/soul */
+            --text-light: #ffffff;
+            --text-dark: #333333;
+            --bg-light: #f9f9f9;
+        }
+
+        body {
+            line-height: 1.6;
+            color: var(--text-dark);
+            background-color: #fff;
+        }
+
+        /* Navigation */
+        header {
+            background-color: var(--primary-color);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .logo {
+            color: var(--text-light);
+            font-size: 24px;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+            .logo span {
+                color: var(--accent-color);
+            }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+            nav ul li {
+                margin-left: 20px;
+            }
+
+                nav ul li a {
+                    color: var(--text-light);
+                    text-decoration: none;
+                    font-size: 16px;
+                    transition: color 0.3s;
+                }
+
+                    nav ul li a:hover {
+                        color: var(--accent-color);
+                    }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1490481651871-ab68de25d43d?q=80&w=1920&auto=format&fit=crop') no-repeat center center/cover;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: var(--text-light);
+            padding: 0 20px;
+            margin-top: 60px;
+        }
+
+        .hero-content h1 {
+            font-size: 48px;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+        }
+
+        .hero-content p {
+            font-size: 20px;
+            font-style: italic;
+            margin-bottom: 30px;
+            color: #ddd;
+        }
+
+        .cta-btn {
+            background-color: var(--accent-color);
+            color: var(--primary-color);
+            padding: 12px 30px;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 5px;
+            transition: background 0.3s, transform 0.3s;
+            display: inline-block;
+        }
+
+            .cta-btn:hover {
+                background-color: #fff;
+                transform: translateY(-2px);
+            }
+
+        /* Sections Universal */
+        section {
+            padding: 80px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 32px;
+            margin-bottom: 40px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+            .section-title::after {
+                content: '';
+                position: absolute;
+                bottom: 0;
+                left: 50%;
+                transform: translateX(-50%);
+                width: 60px;
+                height: 3px;
+                background-color: var(--accent-color);
+            }
+
+        /* About Section */
+        .about {
+            text-align: center;
+            max-width: 800px;
+        }
+
+            .about p {
+                font-size: 18px;
+                color: #555;
+                margin-bottom: 20px;
+                text-align: left;
+            }
+
+        /* Products Section */
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .product-card {
+            background: var(--bg-light);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s;
+            text-align: center;
+        }
+
+            .product-card:hover {
+                transform: translateY(-5px);
+            }
+
+        .product-image {
+            height: 350px;
+            background-size: cover;
+            background-position: center;
+            background-color: #ddd;
+        }
+
+        .product-info {
+            padding: 20px;
+        }
+
+        .product-category {
+            font-size: 12px;
+            text-transform: uppercase;
+            color: #888;
+            letter-spacing: 1px;
+            margin-bottom: 5px;
+        }
+
+        .product-title {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        .product-price {
+            color: var(--accent-color);
+            font-weight: bold;
+            font-size: 16px;
+            margin-bottom: 15px;
+        }
+
+        .buy-btn {
+            background: var(--primary-color);
+            color: var(--text-light);
+            border: none;
+            padding: 10px 20px;
+            width: 100%;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: background 0.3s;
+        }
+
+            .buy-btn:hover {
+                background: var(--accent-color);
+                color: var(--primary-color);
+            }
+
+        /* Contact Section */
+        .contact-container {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+            .form-group label {
+                display: block;
+                margin-bottom: 5px;
+                font-weight: 600;
+            }
+
+            .form-group input, .form-group textarea {
+                width: 100%;
+                padding: 12px;
+                border: 1px solid #ddd;
+                border-radius: 4px;
+                font-size: 16px;
+            }
+
+        .submit-btn {
+            background-color: var(--accent-color);
+            color: var(--primary-color);
+            border: none;
+            padding: 12px 30px;
+            font-size: 16px;
+            font-weight: bold;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+            transition: background 0.3s;
+        }
+
+            .submit-btn:hover {
+                background-color: var(--primary-color);
+                color: var(--text-light);
+            }
+
+        /* Footer */
+        footer {
+            background-color: var(--primary-color);
+            color: var(--text-light);
+            text-align: center;
+            padding: 30px 20px;
+            margin-top: 40px;
+        }
+
+        .footer-info p {
+            margin-bottom: 5px;
+            font-size: 14px;
+            color: #bbb;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-container {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            nav ul li {
+                margin: 0 10px;
+            }
+
+            .hero-content h1 {
+                font-size: 32px;
+            }
+
+            .hero-content p {
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header / Navigation -->
+    <header>
+        <div class="nav-container">
+            <div class="logo">MOFIN-KEM<span>VENTURES</span></div>
+            <nav>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#shop">Shop</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                    <li><a href="blog.html" target="_blank" rel="noopener noreferrer">Blog</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <div class="hero" id="home">
+        <div class="hero-content">
+            <h1>Mofin-Kem Ventures</h1>
+            <p>Quality Fashion, Everyday Essentials, and Curated Finds — All in One Place</p>
+            <a href="#shop" class="cta-btn">Explore Collection</a>
+        </div>
+    </div>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <h2 class="section-title">About Us</h2>
+        <h3>Welcome to Mofin-Kem Ventures</h3>
+        <p>
+            At Mofin-Kem Ventures, our journey began with a passion for quality fashion—bringing stylish women’s clothing, elegant Turkish wear, and trending outfits to our community.
+            As our community grew, so did our vision. Today, Mofin-Kem Ventures has expanded into a multi-faceted general merchant and affiliate marketing destination.
+            While we continue to bring you beautiful, handpicked apparel, we now connect you to a much broader collection of quality everyday products,
+            lifestyle goods, and trusted recommendations from around the globe.
+        </p>
+        <h3>Our Evolution</h3>
+        <p>
+            What started as a focused clothing business has naturally transformed to meet the diverse needs of our customers. We realized that our community valued our taste for quality and reliability—not just in fashion,
+            but across all areas of everyday shopping. By combining direct merchandising with affiliate marketing, we offer a modern, hybrid shopping experience:
+            direct access to our signature collections alongside curated recommendations for products we know you'll love.
+        </p>
+        <h3>Our Mission</h3>
+        <p>To enrich everyday life by making quality goods accessible, affordable, and convenient for households everywhere.</p>
+        <h3>Why Choose Us?</h3>
+        <p>✨<b>Handpicked Quality:</b> Every item we offer or recommend undergoes a strict standard for quality, durability, and style.</p>
+        <p>💡<b>Smart Shopping Made Easy:</b> Whether buying directly from us or through our affiliate partner links, you save time by discovering everything in one place.</p>
+        <p>💰<b>Fair & Honest Pricing:</b> We work directly with global supply networks to deliver top quality without the high markup.</p>
+        <p> 🤝<b>Customer-Centric Values:</b> We pride ourselves on reliable service, transparent recommendations, and dedicated customer support.</p>
+
+    </section>
+
+    <!-- Shop / Products Section -->
+    <section id="shop">
+        <h2 class="section-title">Featured Collection</h2>
+        <div class="products-grid">
+            
+            <!-- Product 1: Women's Clothing -->
+            <div class="product-card">
+                <!-- Replace with your product image URL -->
+                <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1595777457583-95e059d581b8?q=80&w=500&auto=format&fit=crop');"></div>
+                <div class="product-info">
+                    <div class="product-category">Women's Clothing</div>
+                    <h3 class="product-title">Elegant African Print Dress</h3>
+                    <div class="product-price">$89.99</div>
+                    <button class="buy-btn">Add to Cart</button>
+                </div>
+            </div>
+
+            <!-- Product 2: Shoes -->
+            <div class="product-card">
+                <!-- Replace with your product image URL -->
+                <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1543163521-1bf539c55dd2?q=80&w=500&auto=format&fit=crop');"></div>
+                <div class="product-info">
+                    <div class="product-category">Footwear</div>
+                    <h3 class="product-title">Premium Turkish Leather Heels</h3>
+                    <div class="product-price">$120.00</div>
+                    <button class="buy-btn">Add to Cart</button>
+                </div>
+            </div>
+
+            <!-- Product 3: Men's Clothing -->
+            <div class="product-card">
+                <!-- Replace with your product image URL -->
+                <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1617137968427-85924c800a22?q=80&w=500&auto=format&fit=crop');"></div>
+                <div class="product-info">
+                    <div class="product-category">Men's Clothing</div>
+                    <h3 class="product-title">Modern Cut Blazer</h3>
+                    <div class="product-price">$145.00</div>
+                    <button class="buy-btn">Add to Cart</button>
+                </div>
+            </div>
+
+            <!-- Product 4: Other Items / Accessories -->
+            <div class="product-card">
+                <!-- Replace with your product image URL -->
+                <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1584917865442-de89df76afd3?q=80&w=500&auto=format&fit=crop');"></div>
+                <div class="product-info">
+                    <div class="product-category">Accessories</div>
+                    <h3 class="product-title">Handcrafted Luxury Handbag</h3>
+                    <div class="product-price">$75.00</div>
+                    <button class="buy-btn">Add to Cart</button>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <h2 class="section-title">Contact Us</h2>
+        <div class="contact-container">
+            <form action="#" method="POST">
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" name="name" required placeholder="Your Name">
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required placeholder="Your Email">
+                </div>
+                <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea id="message" name="message" rows="5" required placeholder="How can we help you?"></textarea>
+                </div>
+                <button type="submit" class="submit-btn">Send Message</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-info">
+            <p>&copy; 2026 Mofin-Kem Ventures. All Rights Reserved.</p>
+            <p>Email: mofinkemventures@gmail.com | Phone: +1(431) 451-9854</p>
+        </div>
+    </footer>
+
+</body>
+</html>

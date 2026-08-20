@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <title>MKV BLOG - Truth, Analysis & Insight</title>
+</head>
+<body>
+
+    <!-- Header Section -->
+    <header>
+        <div class="header-container">
+            <a href="#home" class="logo" data-category="all">MKV <span>BLOG</span></a>
+            <nav>
+                <ul>
+                    <li><a href="#home" class="nav-link active" data-category="all">Home</a></li>
+                    <li><a href="#politics" class="nav-link" data-category="politics">Politics</a></li>
+                    <li><a href="#economy" class="nav-link" data-category="economy">Economy</a></li>
+                    <li><a href="#sport" class="nav-link" data-category="sport">Sport</a></li>
+                    <li><a href="#showbiz" class="nav-link" data-category="showbiz">Showbiz</a></li>
+                    <li><a href="#lifestyle" class="nav-link" data-category="lifestyle">Lifestyle</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content Layout -->
+    <div class="container">
+        <!-- Primary Feed -->
+        <main>
+            <!-- Featured Hero Article -->
+            <article class="hero-card filterable-article" data-category="politics">
+                <img src="https://via.placeholder.com/800x380" alt="Featured News Image" class="hero-img">
+                <div class="hero-content">
+                    <span class="category-tag">Politics</span>
+                    <h1 class="hero-title"><a href="#politics">Key Policy Shifts Reshape Nigeria's Economic Outlook</a></h1>
+                    <div class="meta-info">By Editor • August 8, 2026</div>
+                    <p>An in-depth analysis of recent fiscal developments and what they mean for businesses and citizens across the nation...</p>
+                    <button class="share-btn" aria-label="Share this page">
+                        <i class="material-icons">share</i>
+                    </button>
+                </div>
+            </article>
+
+            <!-- Articles Grid -->
+            <section class="articles-grid">
+                <article class="article-card filterable-article" data-category="economy">
+                    <img src="https://via.placeholder.com/300x180" alt="Article Thumbnail" class="card-img">
+                    <div class="card-content">
+                        <span class="category-tag">Economy</span>
+                        <h2 class="card-title"><a href="#economy">Market Trends: What Investors are Watching This Quarter</a></h2>
+                        <p class="card-excerpt">A breakdown of financial markets and key sector growth metrics...</p>
+                        <div class="meta-info">August 8, 2026</div>
+                        <button class="share-btn" aria-label="Share this page">
+                            <i class="material-icons">share</i>
+                        </button>
+                    </div>
+                </article>
+
+                <article class="article-card filterable-article" data-category="showbiz">
+                    <img src="https://via.placeholder.com/300x180" alt="Article Thumbnail" class="card-img">
+                    <div class="card-content">
+                        <span class="category-tag">Showbiz</span>
+                        <h2 class="card-title"><a href="#showbiz">Entertainment Industry Highlights & Major Releases</a></h2>
+                        <p class="card-excerpt">The latest updates from music, film, and popular culture...</p>
+                        <div class="meta-info">August 7, 2026</div>
+                        <button class="share-btn" aria-label="Share this page">
+                            <i class="material-icons">share</i>
+                        </button>
+                    </div>
+                </article>
+
+                <article class="article-card filterable-article" data-category="sport">
+                    <img src="https://via.placeholder.com/300x180" alt="Article Thumbnail" class="card-img">
+                    <div class="card-content">
+                        <span class="category-tag">Sport</span>
+                        <h2 class="card-title"><a href="#sport">National League Roundup: Highlights and Results</a></h2>
+                        <p class="card-excerpt">Recap of weekend performances, scores, and upcoming matches...</p>
+                        <div class="meta-info">August 6, 2026</div>
+                        <button class="share-btn" aria-label="Share this page">
+                            <i class="material-icons">share</i>
+                        </button>
+                    </div>
+                </article>
+
+                <article class="article-card filterable-article" data-category="lifestyle">
+                    <img src="https://via.placeholder.com/300x180" alt="Article Thumbnail" class="card-img">
+                    <div class="card-content">
+                        <span class="category-tag">Lifestyle</span>
+                        <h2 class="card-title"><a href="#lifestyle">Ghana National live big on stolen money</a></h2>
+                        <p class="card-excerpt">Recap of weekend performances, scores, and upcoming matches...</p>
+                        <div class="meta-info">August 6, 2026</div>
+                        <button class="share-btn" aria-label="Share this page">
+                            <i class="material-icons">share</i>
+                        </button>
+                    </div>
+                </article>
+            </section>
+        </main>
+
+        <!-- Sidebar Section -->
+        <aside class="sidebar">
+            <div class="widget">
+                <h3 class="widget-title">Trending</h3>
+                <ul class="trending-list">
+                    <li class="trending-item"><a href="#">1. Infrastructure Projects to Watch in 2026</a></li>
+                    <li class="trending-item"><a href="#">2. Tech Hubs Expanding Across Major Cities</a></li>
+                    <li class="trending-item"><a href="#">3. Regulatory Updates for Small Businesses</a></li>
+                    <li class="trending-item"><a href="#">4. Emerging Talents in the Creative Sector</a></li>
+                </ul>
+            </div>
+            
+            <div class="share-sidebar">
+                <!-- Facebook Button -->
+                <a href="https://facebook.com" target="_blank" rel="noopener" class="share-item facebook" data-platform="facebook">
+                    <span class="icon">📘</span>
+                    <span class="counter" id="count-facebook">0</span>
+                </a>
+
+                <!-- X / Twitter Button -->
+                <a href="https://twitter.com" target="_blank" rel="noopener" class="share-item x-twitter" data-platform="x">
+                    <span class="icon">🐦</span>
+                    <span class="counter" id="count-x">0</span>
+                </a>
+
+                <!-- LinkedIn Button -->
+                <a href="https://linkedin.com" target="_blank" rel="noopener" class="share-item linkedin" data-platform="linkedin">
+                    <span class="icon">💼</span>
+                    <span class="counter" id="count-linkedin">0</span>
+                </a>
+            </div>
+
+            <div class="widget">
+                <h3 class="widget-title">About The Verdict NG</h3>
+                <p style="font-size: 0.9rem; color: var(--text-muted);">Delivering timely reportage, independent commentary, and comprehensive coverage on news, politics, business, and culture.</p>
+            </div>
+        </aside>
+    </div>
+
+    <!-- Footer Section -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-col">
+                <a href="#home"><h4>The Verdict NG</h4></a>
+                <p style="font-size: 0.85rem; color: #aaa;">Your source for truth, analysis, and perspective.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Categories</h4>
+                <ul>
+                    <li><a href="#politics" class="nav-link" data-category="politics">Politics</a></li>
+                    <li><a href="#economy" class="nav-link" data-category="economy">Economy</a></li>
+                    <li><a href="#showbiz" class="nav-link" data-category="showbiz">Showbiz</a></li>
+                    <li><a href="#sport" class="nav-link" data-category="sport">Sport</a></li>
+                    <li><a href="#lifestyle" class="nav-link" data-category="lifestyle">Lifestyle</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Company</h4>
+                <ul>
+                    <li><a href="#">Contact Us</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms of Service</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            &copy; 2026 The Verdict NG. All rights reserved.
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
