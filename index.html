@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mofin-Kem Ventures | Quality Fashion, Everyday Essentials, and Curated Finds — All in One Place</title>
-    <link rel="icon" type="<link rel="icon" type="image/png" href="images/Favicon.png">
+    <link rel="icon" type="image/png" href="images/Favicon.png">
     <style>
         /* CSS Reset & Variables */
         * {
@@ -26,6 +26,7 @@
             line-height: 1.6;
             color: var(--text-dark);
             background-color: #fff;
+            overflow-x: hidden;
         }
 
         /* Navigation */
@@ -34,15 +35,17 @@
             position: fixed;
             width: 100%;
             top: 0;
+            left: 0;
             z-index: 1000;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            border-bottom: none;
+           /* box-shadow: 0 2px 5px rgba(0,0,0,0.2);*/
         }
 
         .nav-container {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            max-width: 1200px;
+            max-width: 1400px;
             margin: 0 auto;
             padding: 20px;
         }
@@ -52,43 +55,92 @@
             font-size: 24px;
             font-weight: bold;
             letter-spacing: 1px;
+            text-decoration: none;
         }
 
-            .logo span {
-                color: var(--accent-color);
-            }
+        .logo span {
+            color: var(--accent-color);
+        }
 
         nav ul {
             display: flex;
             list-style: none;
         }
 
-            nav ul li {
-                margin-left: 20px;
-            }
+        nav ul li {
+            margin-left: 20px;
+        }
 
-                nav ul li a {
-                    color: var(--text-light);
-                    text-decoration: none;
-                    font-size: 16px;
-                    transition: color 0.3s;
-                }
+        nav ul li a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-size: 16px;
+            transition: color 0.3s;
+        }
 
-                    nav ul li a:hover {
-                        color: var(--accent-color);
-                    }
+        nav ul li a:hover {
+            color: var(--accent-color);
+        }
 
-        /* Hero Section */
-        .hero {
-            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1490481651871-ab68de25d43d?q=80&w=1920&auto=format&fit=crop') no-repeat center center/cover;
+        /* Hero Section - Full Viewport Width & Height */
+        #home {
+            color: white;
+            overflow: hidden;
+            background-color: #0f2043;
+            position: relative;
+            width: 100vw;
+            max-width: 100%;
             height: 100vh;
+           /* height: 10dvh;*/
             display: flex;
             justify-content: center;
             align-items: center;
             text-align: center;
-            color: var(--text-light);
-            padding: 0 20px;
-            margin-top: 60px;
+            padding: 0; /* 20px;*/
+        }
+
+        .hero-slider {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+
+        .hero-slider .slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+        }
+
+        .hero-slider .slide.active {
+            opacity: 1;
+        }
+
+        /* Dark overlay for text readability */
+        #home::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 2;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 3;
+            max-width: 800px;
         }
 
         .hero-content h1 {
@@ -104,6 +156,32 @@
             color: #ddd;
         }
 
+        .slider-dots {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 12px;
+            z-index: 10;
+        }
+
+        .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.4);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .dot.active, .dot:hover {
+            background-color: #ffffff;
+            transform: scale(1.2);
+            box-shadow: 0 0 8px rgba(255, 255, 255, 0.6);
+        }
+
         .cta-btn {
             background-color: var(--accent-color);
             color: var(--primary-color);
@@ -116,7 +194,7 @@
         }
 
             .cta-btn:hover {
-                background-color: #fff;
+                background-color: #d35400;
                 transform: translateY(-2px);
             }
 
@@ -135,16 +213,16 @@
             padding-bottom: 10px;
         }
 
-            .section-title::after {
-                content: '';
-                position: absolute;
-                bottom: 0;
-                left: 50%;
-                transform: translateX(-50%);
-                width: 60px;
-                height: 3px;
-                background-color: var(--accent-color);
-            }
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background-color: var(--accent-color);
+        }
 
         /* About Section */
         .about {
@@ -152,12 +230,17 @@
             max-width: 800px;
         }
 
-            .about p {
-                font-size: 18px;
-                color: #555;
-                margin-bottom: 20px;
-                text-align: left;
-            }
+        .about h3 {
+            margin-top: 30px;
+            margin-bottom: 10px;
+        }
+
+        .about p {
+            font-size: 18px;
+            color: #555;
+            margin-bottom: 20px;
+            text-align: left;
+        }
 
         /* Products Section */
         .products-grid {
@@ -175,9 +258,9 @@
             text-align: center;
         }
 
-            .product-card:hover {
-                transform: translateY(-5px);
-            }
+        .product-card:hover {
+            transform: translateY(-5px);
+        }
 
         .product-image {
             height: 350px;
@@ -222,10 +305,10 @@
             transition: background 0.3s;
         }
 
-            .buy-btn:hover {
-                background: var(--accent-color);
-                color: var(--primary-color);
-            }
+        .buy-btn:hover {
+            background: var(--accent-color);
+            color: var(--primary-color);
+        }
 
         /* Contact Section */
         .contact-container {
@@ -237,19 +320,19 @@
             margin-bottom: 20px;
         }
 
-            .form-group label {
-                display: block;
-                margin-bottom: 5px;
-                font-weight: 600;
-            }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 600;
+        }
 
-            .form-group input, .form-group textarea {
-                width: 100%;
-                padding: 12px;
-                border: 1px solid #ddd;
-                border-radius: 4px;
-                font-size: 16px;
-            }
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+        }
 
         .submit-btn {
             background-color: var(--accent-color);
@@ -264,10 +347,10 @@
             transition: background 0.3s;
         }
 
-            .submit-btn:hover {
-                background-color: var(--primary-color);
-                color: var(--text-light);
-            }
+        .submit-btn:hover {
+            background-color: var(--primary-color);
+            color: var(--text-light);
+        }
 
         /* Footer */
         footer {
@@ -310,13 +393,15 @@
     <!-- Header / Navigation -->
     <header>
         <div class="nav-container">
-            <div class="logo">MOFIN-KEM<span>VENTURES</span></div>
+            <a href="index.html" class="logo">MOFIN-KEM<span> VENTURES</span></a>
             <nav>
                 <ul>
                     <li><a href="#home">Home</a></li>
                     <li><a href="#about">About</a></li>
                     <li><a href="#shop">Shop</a></li>
                     <li><a href="#contact">Contact</a></li>
+                    <li><a href="Farm.html" target="_blank" rel="noopener noreferrer">Farm Division</a></li>
+                    <li><a href="Wholesales.html" target="_blank" rel="noopener noreferrer">Wholesales Division</a></li>
                     <li><a href="blog.html" target="_blank" rel="noopener noreferrer">Blog</a></li>
                 </ul>
             </nav>
@@ -324,13 +409,33 @@
     </header>
 
     <!-- Hero Section -->
-    <div class="hero" id="home">
+    <section id="home">
+        <div class="hero-slider">
+            <div class="slide active" style="background-image: url('images/bagShoeBarner.png?auto=format&fit=crop&w=1920&q=80');"></div>
+            <div class="slide" style="background-image: url('images/clothesBannar.png?auto=format&fit=crop&w=1920&q=80');"></div>
+            <div class="slide" style="background-image: url('images/ShoeBanner.png?auto=format&fit=crop&w=1920&q=80');"></div>
+            <div class="slide" style="background-image: url('images/fwear3.png?auto=format&fit=crop&w=1920&q=80');"></div>
+            <div class="slide" style="background-image: url('images/bagNshoe.png?auto=format&fit=crop&w=1920&q=80');"></div>
+            <div class="slide" style="background-image: url('images/fwear2.png?auto=format&fit=crop&w=1920&q=80');"></div>
+            <div class="slide" style="background-image: url('images/BlazerBanner.png?auto=format&fit=crop&w=1920&q=80');"></div>
+        </div>
+        
         <div class="hero-content">
             <h1>Mofin-Kem Ventures</h1>
             <p>Quality Fashion, Everyday Essentials, and Curated Finds — All in One Place</p>
-            <a href="#shop" class="cta-btn">Explore Collection</a>
+            <a href="#shop" class="cta-btn">Explore</a>
         </div>
-    </div>
+
+        <div class="slider-dots">
+            <span class="dot active" data-index="0"></span>
+            <span class="dot" data-index="1"></span>
+            <span class="dot" data-index="2"></span>
+            <span class="dot" data-index="3"></span>
+            <span class="dot" data-index="4"></span>
+            <span class="dot" data-index="5"></span>
+            <span class="dot" data-index="6"></span>
+        </div>
+    </section>
 
     <!-- About Section -->
     <section id="about" class="about">
@@ -351,66 +456,80 @@
         <h3>Our Mission</h3>
         <p>To enrich everyday life by making quality goods accessible, affordable, and convenient for households everywhere.</p>
         <h3>Why Choose Us?</h3>
-        <p>✨<b>Handpicked Quality:</b> Every item we offer or recommend undergoes a strict standard for quality, durability, and style.</p>
-        <p>💡<b>Smart Shopping Made Easy:</b> Whether buying directly from us or through our affiliate partner links, you save time by discovering everything in one place.</p>
-        <p>💰<b>Fair & Honest Pricing:</b> We work directly with global supply networks to deliver top quality without the high markup.</p>
-        <p> 🤝<b>Customer-Centric Values:</b> We pride ourselves on reliable service, transparent recommendations, and dedicated customer support.</p>
-
+        <p>✨ <b>Handpicked Quality:</b> Every item we offer or recommend undergoes a strict standard for quality, durability, and style.</p>
+        <p>💡 <b>Smart Shopping Made Easy:</b> Whether buying directly from us or through our affiliate partner links, you save time by discovering everything in one place.</p>
+        <p>💰 <b>Fair & Honest Pricing:</b> We work directly with global supply networks to deliver top quality without the high markup.</p>
+        <p>🤝 <b>Customer-Centric Values:</b> We pride ourselves on reliable service, transparent recommendations, and dedicated customer support.</p>
     </section>
 
     <!-- Shop / Products Section -->
     <section id="shop">
         <h2 class="section-title">Featured Collection</h2>
         <div class="products-grid">
-            
             <!-- Product 1: Women's Clothing -->
             <div class="product-card">
-                <!-- Replace with your product image URL -->
-                <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1595777457583-95e059d581b8?q=80&w=500&auto=format&fit=crop');"></div>
+                <div class="product-image" style="background-image: url('images/AfriPrint.png?');"></div>
                 <div class="product-info">
+
                     <div class="product-category">Women's Clothing</div>
                     <h3 class="product-title">Elegant African Print Dress</h3>
-                    <div class="product-price">$89.99</div>
-                    <button class="buy-btn">Add to Cart</button>
+                    <!----div class="product-price">$89.99</div-->
+                    <!--button class="buy-btn">Add to Cart</!button-->
                 </div>
             </div>
 
             <!-- Product 2: Shoes -->
             <div class="product-card">
-                <!-- Replace with your product image URL -->
-                <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1543163521-1bf539c55dd2?q=80&w=500&auto=format&fit=crop');"></div>
+                <div class="product-image" style="background-image: url('images/bagShoeBarner.png?');"></div>
                 <div class="product-info">
                     <div class="product-category">Footwear</div>
-                    <h3 class="product-title">Premium Turkish Leather Heels</h3>
-                    <div class="product-price">$120.00</div>
-                    <button class="buy-btn">Add to Cart</button>
+                    <h3 class="product-title">Premium Turkish Leather Wear</h3>
+                    <!----div class="product-price">$89.99</div-->
+                    <!--button class="buy-btn">Add to Cart</!button-->
                 </div>
             </div>
 
             <!-- Product 3: Men's Clothing -->
             <div class="product-card">
-                <!-- Replace with your product image URL -->
-                <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1617137968427-85924c800a22?q=80&w=500&auto=format&fit=crop');"></div>
+                <div class="product-image" style="background-image: url('images/fwear2.png?auto=format&fit=crop&w=1920&q=80');"></div>
                 <div class="product-info">
-                    <div class="product-category">Men's Clothing</div>
-                    <h3 class="product-title">Modern Cut Blazer</h3>
-                    <div class="product-price">$145.00</div>
-                    <button class="buy-btn">Add to Cart</button>
+                    <div class="product-category">Unisex cut Clothing</div>
+                    <h3 class="product-title">Modern African Wear</h3>
+                    <!----div class="product-price">$89.99</div-->
+                    <!--button class="buy-btn">Add to Cart</!button-->
                 </div>
             </div>
 
             <!-- Product 4: Other Items / Accessories -->
             <div class="product-card">
-                <!-- Replace with your product image URL -->
-                <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1584917865442-de89df76afd3?q=80&w=500&auto=format&fit=crop');"></div>
+                <div class="product-image" style="background-image: url('images/Handbag.png?auto=format&fit=crop&w=1920&q=80');"></div>
                 <div class="product-info">
                     <div class="product-category">Accessories</div>
                     <h3 class="product-title">Handcrafted Luxury Handbag</h3>
-                    <div class="product-price">$75.00</div>
-                    <button class="buy-btn">Add to Cart</button>
+                    <!----div class="product-price">$89.99</div-->
+                    <!--button class="buy-btn">Add to Cart</!button-->
                 </div>
             </div>
-
+            <!-- Product 5: Other Items / Accessories -->
+            <div class="product-card">
+                <div class="product-image" style="background-image: url('images/fwear3.png?auto=format&fit=crop&w=1920&q=80');"></div>
+                <div class="product-info">
+                    <div class="product-category">Women's Clothing</div>
+                    <h3 class="product-title">African Wear</h3>
+                    <!----div class="product-price">$89.99</div-->
+                    <!--button class="buy-btn">Add to Cart</!button-->
+                </div>
+            </div>
+            <!-- Product 6: Other Items / Accessories -->
+            <div class="product-card">
+                <div class="product-image" style="background-image: url('images/BlazerBanner.png?auto=format&fit=crop&w=1920&q=80');"></div>
+                <div class="product-info">
+                    <div class="product-category">Women's Clothing</div>
+                    <h3 class="product-title">Blazer</h3>
+                    <!----div class="product-price">$89.99</div-->
+                    <!--button class="buy-btn">Add to Cart</!button-->
+                </div>
+            </div>
         </div>
     </section>
 
@@ -444,5 +563,39 @@
         </div>
     </footer>
 
+    <!-- Slider Script -->
+    <script>
+        const slides = document.querySelectorAll('.hero-slider .slide');
+        const dots = document.querySelectorAll('.slider-dots .dot');
+        let currentIndex = 0;
+        const intervalTime = 5000;
+
+        function nextSlide() {
+            slides[currentIndex].classList.remove('active');
+            dots[currentIndex].classList.remove('active');
+            
+            currentIndex = (currentIndex + 1) % slides.length;
+            
+            slides[currentIndex].classList.add('active');
+            dots[currentIndex].classList.add('active');
+        }
+
+        let slideInterval = setInterval(nextSlide, intervalTime);
+
+        dots.forEach((dot, index) => {
+            dot.addEventListener('click', () => {
+                clearInterval(slideInterval);
+                slides[currentIndex].classList.remove('active');
+                dots[currentIndex].classList.remove('active');
+                
+                currentIndex = index;
+                
+                slides[currentIndex].classList.add('active');
+                dots[currentIndex].classList.add('active');
+                
+                slideInterval = setInterval(nextSlide, intervalTime);
+            });
+        });
+    </script>
 </body>
 </html>

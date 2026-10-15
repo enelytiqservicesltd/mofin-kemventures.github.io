@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mofin-Kem Ventures | Wholesales Division</title>
+    <link rel="icon" type="image/png" href="images/Favicon.png">
+    <style>
+        /* CSS Reset & Variables */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        :root {
+            --primary-color: #1a1a1a;
+            --accent-color: #d4af37; /* Gold accent for elegance */
+            --text-light: #ffffff;
+            --text-dark: #333333;
+            --bg-light: #f9f9f9;
+        }
+
+        body {
+            line-height: 1.6;
+            color: var(--text-dark);
+            background-color: #fff;
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        header {
+            background-color: var(--primary-color);
+            position: sticky;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            border-bottom: none;
+            /* box-shadow: 0 2px 5px rgba(0,0,0,0.2);*/
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .logo {
+            color: var(--text-light);
+            font-size: 24px;
+            font-weight: bold;
+            letter-spacing: 1px;
+            text-decoration: none;
+            
+        }
+
+        .logo span {
+            color: var(--accent-color);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-left: 20px;
+        }
+
+        nav ul li a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-size: 16px;
+            transition: color 0.3s;
+        }
+
+        nav ul li a:hover, nav ul li a.active {
+            color: var(--accent-color);
+        }
+        #home {
+            color: white;
+            overflow: hidden;
+            background-color: #0f2043;
+            position: relative;
+            width: 100vw;
+            max-width: 100%;
+            height: 100vh;
+            /* height: 10dvh;*/
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0; /* 20px;*/
+        }
+
+        /* Page Banner 
+        .wholesale-hero {
+            height: 100vh;
+             width: 100vw;
+            max-width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--light-color);
+            padding: 0;
+           
+        }*/
+        .wholesale-hero {
+            position: relative;
+            z-index: 3;
+            max-width: 800px;
+        }
+
+        .hero-slider {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+
+            .hero-slider .slide {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background-size: cover;
+                background-position: center;
+                background-repeat: no-repeat;
+                opacity: 0;
+                transition: opacity 1s ease-in-out;
+            }
+
+                .hero-slider .slide.active {
+                    opacity: 1;
+                }
+
+        /* Dark overlay for text readability */
+        #home::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 2;
+        }
+        .wholesale-hero h1 {
+            font-size: 42px;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            letter-spacing: 1px;
+            color: var(--text-light);
+        }
+
+            .wholesale-hero p {
+                font-size: 24px;
+                color: #ddd;
+                margin-bottom: 20px;
+                font-style: italic;
+            }
+        .slider-dots {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 12px;
+            z-index: 10;
+        }
+
+        .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.4);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+            .dot.active, .dot:hover {
+                background-color: #ffffff;
+                transform: scale(1.2);
+                box-shadow: 0 0 8px rgba(255, 255, 255, 0.6);
+            }
+        .btn {
+            background-color: var(--accent-color);
+            color: var(--primary-color);
+            padding: 12px 30px; /*0.8rem 2rem;*/
+            border: none;
+            border-radius: 5px;
+            font-size: 20px;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            transition: background 0.3s, transform 0.3s;
+            display: inline-block;
+        }
+
+            .btn:hover {
+                background-color: #d35400;
+            }
+
+
+        /* Sections Universal */
+            section {
+            padding: 80px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 32px;
+            margin-bottom: 40px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background-color: var(--accent-color);
+        }
+
+        /* Wholesale Intro / Perks */
+        .wholesale-intro {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 60px auto;
+        }
+
+        .wholesale-intro p {
+            font-size: 18px;
+            color: #555;
+            margin-bottom: 20px;
+        }
+
+        .perks-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+
+        .perk-card {
+            background: var(--bg-light);
+            padding: 30px 20px;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            border-top: 4px solid var(--accent-color);
+        }
+
+        .perk-card h3 {
+            margin-bottom: 10px;
+            font-size: 20px;
+        }
+
+        .perk-card p {
+            color: #666;
+            font-size: 15px;
+        }
+
+        /* Wholesale Catalog Categories */
+        .categories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .category-card {
+            background: var(--bg-light);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .category-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .category-image {
+            height: 250px;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .category-info {
+            padding: 20px;
+        }
+
+        .category-title {
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+
+        .category-desc {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 15px;
+        }
+
+        /* Wholesale Inquiry Form */
+        .inquiry-container {
+            max-width: 700px;
+            margin: 0 auto;
+            background: var(--bg-light);
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 600;
+        }
+
+        .form-group input, .form-group select, .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+
+        .submit-btn {
+            background-color: var(--accent-color);
+            color: var(--primary-color);
+            border: none;
+            padding: 12px 30px;
+            font-size: 16px;
+            font-weight: bold;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+            transition: background 0.3s;
+        }
+
+        .submit-btn:hover {
+            background-color: var(--primary-color);
+            color: var(--text-light);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--primary-color);
+            color: var(--text-light);
+            text-align: center;
+            padding: 30px 20px;
+            margin-top: 40px;
+        }
+
+        .footer-info p {
+            margin-bottom: 5px;
+            font-size: 14px;
+            color: #bbb;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-container {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            nav ul li {
+                margin: 0 10px;
+            }
+
+            .wholesale-hero h1 {
+                font-size: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header / Navigation -->
+    <header>
+        <div class="nav-container">
+            <a href="Wholesales.html" class="logo">MOFIN-KEM<span> VENTURES WHOLESALES</span></a>
+            <nav>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#category">Category</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                    <li><a href="Farm.html">Farm Division</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Wholesale Hero Section -->
+    <section id="home">
+        <div class="hero-slider">
+            <div class="slide active" style="background-image: url('images/Paints.png?auto=format&fit=crop&w=1920&q=80');"></div>
+            <div class="slide" style="background-image: url('images/WholesalesStore.png?auto=format&fit=crop&w=1920&q=80');"></div>
+            <div class="slide" style="background-image: url('images/WholesalesStore1.png?auto=format&fit=crop&w=1920&q=80');"></div>
+        </div>
+        <div class="wholesale-hero">
+            <h1>Wholesales</h1>
+            <p>Partner with Mofin-Kem Ventures for bulk supply, competitive volume pricing, and dependable distribution.</p>
+            <a href="#category" class="btn">Explore The Categories</a>
+        </div>
+        <div class="slider-dots">
+            <span class="dot active" data-index="0"></span>
+            <span class="dot" data-index="1"></span>
+            <span class="dot" data-index="2"></span>
+        </div>
+    </section>
+
+    <!-- Overview & Perks -->
+    <section id="about">
+        <div class="wholesale-intro">
+            <h2 class="section-title">Why Partner With Us?</h2>
+            <p>
+                As a growing multi-faceted general merchant and agricultural supplier, Mofin-Kem Ventures provides bulk access to high-quality apparel, Turkish wear, everyday essentials, and farm produce. We empower retailers, boutique owners, and institutional buyers with reliable volume solutions.
+            </p>
+        </div>
+
+        <div class="perks-grid">
+            <div class="perk-card">
+                <h3>Bulk Pricing Tiers</h3>
+                <p>Enjoy highly competitive margins and graduated discount pricing structure designed to maximize your retail profitability.</p>
+            </div>
+            <div class="perk-card">
+                <h3>Quality Assurance</h3>
+                <p>Every bulk shipment undergoes strict quality control checks to meet premium international and regional retail standards.</p>
+            </div>
+            <div class="perk-card">
+                <h3>Reliable Supply Chain</h3>
+                <p>Consistent, transparent inventory flow and direct global network access ensure your business stays stocked year-round.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Wholesale Categories -->
+    <section id="category" style="background-color: var(--bg-light);">
+        <h2 class="section-title">Wholesale Product Categories</h2>
+        <div class="categories-grid">
+            <div class="category-card">
+                <div class="category-image" style="background-image: url('images/Paints.png?auto=format&fit=crop&w=1920&q=80');"></div>
+                <div class="category-info">
+                    <h3 class="category-title">Quality Paints</h3>
+                    <p class="category-desc">Matte or satin low-VOC emulsion paints work best for setting a sophisticated backdrop that makes high-end accessories pop under display lighting.</p>
+                </div>
+            </div>
+            <div class="category-card">
+                <div class="category-image" style="background-image: url('https://images.unsplash.com/photo-1490481651871-ab68de25d43d?q=80&w=500&auto=format&fit=crop');"></div>
+                <div class="category-info">
+                    <h3 class="category-title">Apparel & Turkish Wear</h3>
+                    <p class="category-desc">Trendy women's wear, men's clothing, and luxury imported Turkish outfits available in full size runs.</p>
+                </div>
+            </div>
+
+            <div class="category-card">
+                <div class="category-image" style="background-image: url('https://images.unsplash.com/photo-1543163521-1bf539c55dd2?q=80&w=500&auto=format&fit=crop');"></div>
+                <div class="category-info">
+                    <h3 class="category-title">Footwear & Accessories</h3>
+                    <p class="category-desc">Designer leather heels, footwear collections, handbags, and lifestyle accessories for bulk orders.</p>
+                </div>
+            </div>
+
+            <div class="category-card">
+                <div class="category-image" style="background-image: url('https://images.unsplash.com/photo-1500937386664-56d1dfef3854?q=80&w=500&auto=format&fit=crop');"></div>
+                <div class="category-info">
+                    <h3 class="category-title">Agricultural Produce</h3>
+                    <p class="category-desc">Fresh farm produce, including raw cassava products, poultry produce, and livestock supplies in commercial quantities.</p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Wholesale Inquiry Form -->
+    <section id="contact">
+        <h2 class="section-title">Request a Wholesale Quote</h2>
+        <div class="inquiry-container">
+            <form action="#" method="POST">
+                <div class="form-group">
+                    <label for="company">Business / Company Name</label>
+                    <input type="text" id="company" name="company" required placeholder="Your Business Name">
+                </div>
+                <div class="form-group">
+                    <label for="name">Contact Person</label>
+                    <input type="text" id="name" name="name" required placeholder="Full Name">
+                </div>
+                <div class="form-group">
+                    <label for="email">Business Email</label>
+                    <input type="email" id="email" name="email" required placeholder="email@business.com">
+                </div>
+                <div class="form-group">
+                    <label for="phone">Phone Number</label>
+                    <input type="tel" id="phone" name="phone" required placeholder="+1(431) 451-9854">
+                </div>
+                <div class="form-group">
+                    <label for="category">Primary Interest</label>
+                    <select id="category" name="category" required>
+                        <option value="">Select a category</option>
+                        <option value="apparel">Apparel & Turkish Wear</option>
+                        <option value="footwear">Footwear & Accessories</option>
+                        <option value="agriculture">Agricultural Produce</option>
+                        <option value="general">General Merchandise Mix</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="details">Order Requirements & Estimated Volume</label>
+                    <textarea id="details" name="details" rows="5" required placeholder="Describe quantities, target delivery dates, and specific requirements..."></textarea>
+                </div>
+                <button type="submit" class="submit-btn">Submit Wholesale Inquiry</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-info">
+            <p>&copy; 2026 Mofin-Kem Ventures. All Rights Reserved.</p>
+            <p>Email: info@mofinkemventures.com | Phone: +234(813) 583-1736</p>
+        </div>
+    </footer>
+    <script>
+        const slides = document.querySelectorAll('.hero-slider .slide');
+        const dots = document.querySelectorAll('.slider-dots .dot');
+        let currentIndex = 0;
+        const intervalTime = 5000;
+
+        function nextSlide() {
+            slides[currentIndex].classList.remove('active');
+            dots[currentIndex].classList.remove('active');
+
+            currentIndex = (currentIndex + 1) % slides.length;
+
+            slides[currentIndex].classList.add('active');
+            dots[currentIndex].classList.add('active');
+        }
+
+        let slideInterval = setInterval(nextSlide, intervalTime);
+
+        dots.forEach((dot, index) => {
+            dot.addEventListener('click', () => {
+                clearInterval(slideInterval);
+                slides[currentIndex].classList.remove('active');
+                dots[currentIndex].classList.remove('active');
+
+                currentIndex = index;
+
+                slides[currentIndex].classList.add('active');
+                dots[currentIndex].classList.add('active');
+
+                slideInterval = setInterval(nextSlide, intervalTime);
+            });
+        });
+    </script>
+
+</body>
+</html>

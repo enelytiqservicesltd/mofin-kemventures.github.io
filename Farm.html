@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mofin-Kem Ventures | Farm Division</title>
+    <!-- Google Fonts for professional typography -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+       /* :root {
+           /* --primary-color: #2c5e3b; *//* Deep farm green */
+           /* --secondary-color: #e67e22; /* Warm harvest orange */
+           /* --accent-color: #f4f6f0; *//* Soft light background */
+           /* --dark-color: #333333;*/
+           /* --light-color: #ffffff;*/
+     /*   }*/
+        
+        :root {
+            --primary-color: #1a1a1a;
+            --accent-color: #d4af37; /* Gold accent for elegance */
+            --text-light: #ffffff;
+            --text-dark: #333333;
+            --bg-light: #f9f9f9;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            color: var(--text-dark); /*var(--text-dark);*/
+            background-color: #fff;
+            line-height: 1.6;
+        }
+
+        /* Header & Navigation */
+        header {
+            background-color: var(--primary-color);
+            /* box-shadow: 0 2px 5px rgba(0,0,0,0.2);*/
+            position: sticky;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            border-bottom: none;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;/*1rem 2rem;*/
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            /* font-size: 1.5rem;
+            font-weight: 700;*/
+            color: var(--text-light);
+            font-size: 24px;
+            font-weight: bold;
+            letter-spacing: 1px;
+            text-decoration: none;
+            text-transform: uppercase;
+        }
+
+            .logo span {
+                color: var(--accent-color);
+            }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+           
+        }
+
+            .nav-links a {
+                text-decoration: none;
+                color: var(--text-light);
+                font-weight: 500;
+                transition: color 0.3s;
+            }
+
+            .nav-links a:hover {
+                color: var(--accent-color);
+            }
+        
+
+        #home {
+            color: white;
+            overflow: hidden;
+            background-color: #0f2043;
+            position: relative;
+            width: 100vw;
+            max-width: 100%;
+            height: 100vh;
+            /* height: 10dvh;*/
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0; /* 20px;*/
+        }
+
+        /* Hero Section 
+        .hero {
+          background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5));
+            
+            height: 100vh;
+            width: 100vw;
+            max-width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--light-color);
+            padding: 0 1rem;
+        }
+        */
+        .farm-hero {
+            position: relative;
+            z-index: 3;
+            max-width: 800px;
+        }
+        .hero-slider {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+            .hero-slider .slide {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background-size: cover;
+                background-position: center;
+                background-repeat: no-repeat;
+                opacity: 0;
+                transition: opacity 1s ease-in-out;
+            }
+
+                .hero-slider .slide.active {
+                    opacity: 1;
+                }
+      
+        #home::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 2;
+        }
+
+        .farm-hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+            color: var(--text-light);
+        }
+
+        .farm-hero p {
+            font-size: 24px;
+            margin-bottom: 20px;
+           /* max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;*/
+            color: var(--text-light);
+            font-style: italic;
+        }
+        .slider-dots {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 12px;
+            z-index: 10;
+        }
+
+        .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.4);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+            .dot.active, .dot:hover {
+                background-color: #ffffff;
+                transform: scale(1.2);
+                box-shadow: 0 0 8px rgba(255, 255, 255, 0.6);
+            }
+    
+        .btn {
+            background-color: var(--accent-color);
+            color: var(--primary-color);
+            padding: 12px 30px;
+            border: none;
+            border-radius: 5px;
+            font-size: 20px;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            transition: background 0.3s, transform 0.3s;
+            display: inline-block;
+        }
+
+        .btn:hover {
+            background-color: #d35400;
+        }
+
+        /* Sections General */
+        section {
+            /* padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;*/
+            padding: 80px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.2rem;
+            color: var(--primary-color);
+            margin-bottom: 3rem;
+            font-weight: 600;
+        }
+
+        /* About Section */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .about-text h3 {
+            font-size: 1.8rem;
+            color: var(--secondary-color);
+            margin-bottom: 1rem;
+        }
+
+        .about-text p {
+            margin-bottom: 1rem;
+        }
+
+        .about-image img {
+            width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        /* Services/Products Grid */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            background: var(--light-color);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            transition: transform 0.3s;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .service-img {
+            height: 200px;
+            width: 100%;
+            object-fit: cover;
+        }
+
+        .service-info {
+            padding: 1.5rem;
+        }
+
+        .service-info h4 {
+            color: var(--primary-color);
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Contact Section */
+        .contact-container {
+            background-color: var(--light-color);
+            padding: 3rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+        }
+
+        .contact-info p {
+            margin-bottom: 1rem;
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 0.8rem;
+            margin-bottom: 1rem;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+
+        .contact-form textarea {
+            resize: vertical;
+            height: 120px;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--primary-color);
+            color: var(--light-color);
+            text-align: center;
+            padding: 2rem;
+            margin-top: 3rem;
+        }
+
+        /* Responsive Design */
+        @media(max-width: 768px) {
+            .about-grid, .contact-container {
+                grid-template-columns: 1fr;
+            }
+            .farm-hero h1 {
+                font-size: 2.2rem;
+            }
+            .nav-links {
+                display: none; /* Can be expanded with mobile toggle script if needed */
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="nav-container">
+            <a href="farm.html" class="logo">Mofin-Kem <span>Ventures Farm</span></a>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#operations">Our Produce</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><a href="Wholesales.html">Wholesales Division</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home">
+        <div class="hero-slider">
+            <div class="slide active" style="background-image: url('images/CasavaFarm.png?auto=format&fit=crop&w=1920&q=80');"></div>
+            <div class="slide" style="background-image: url('images/Cows.png?auto=format&fit=crop&w=1920&q=80');"></div>
+            <div class="slide" style="background-image: url('images/PigStock.png?auto=format&fit=crop&w=1920&q=80');"></div>
+            <div class="slide" style="background-image: url('images/PoultryBirds.png?auto=format&fit=crop&w=1920&q=80');"></div>
+        </div>
+        <div class="farm-hero">
+            <h1>Cultivating Quality, Harvesting Excellence</h1>
+            <p>Welcome to the agricultural branch of Mofin-Kem Ventures. Supplying premium, sustainably grown farm produce to feed our communities.</p>
+            <a href="#contact" class="btn">Partner With Us</a>
+        </div>
+        <div class="slider-dots">
+            <span class="dot active" data-index="0"></span>
+            <span class="dot" data-index="1"></span>
+            <span class="dot" data-index="2"></span>
+            <span class="dot" data-index="2"></span>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <h2 class="section-title">About Our Farm</h2>
+        <div class="about-grid">
+            <div class="about-text">
+                <h3>Rooted in Integrity and Productivity</h3>
+                <p>At Mofin-Kem Ventures, our farming division combines modern agronomic practices with reliable traditional methods to maximize yield and quality.</p>
+                <p>We are dedicated to sustainable food production, ensuring our crops and livestock meet the highest standards of safety, nutrition, and market value.</p>
+            </div>
+            <div class="about-image">
+             
+                <img src="images/palm.png" auto=format&fit =crop&w =300&q =80" alt="Farmland">
+            </div>
+        </div>
+    </section>
+
+    <!-- Operations / Produce Section -->
+    <section id="operations" style="background-color: #ffffff;">
+        <div style="max-width: 1200px; margin: 0 auto;">
+            <h2 class="section-title">What We Produce</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <img src="images/foodcrop.png" auto=format&fit =crop&w =300&q =80" alt="Farmland" alt="Crop Production" class="service-img">
+                    <div class="service-info">
+                        <h4>Crop Production</h4>
+                        <p>High-yield staple grains, legumes, and cash crops grown under optimal soil and climate conditions.</p>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <img src="images/Cows.png" auto=format&fit =crop&w =300&q =80" alt="Farmland" alt="Livestock Farming" class="service-img">
+                    <div class="service-info">
+                        <h4>Livestock Farming</h4>
+                        <p>Healthy, well-reared livestock maintained with strict adherence to veterinary and animal welfare standards.</p>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <img src="images/Agro.png" auto=format&fit =crop&w =300&q =80" alt="Farmland" alt="Agro-Processing" class="service-img">
+                    <div class="service-info">
+                        <h4>Agro-Processing</h4>
+                        <p>Value-addition services ensuring harvested raw goods are neatly packaged, stored, and ready for commercial markets.</p>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <img src="images/CasavaFarm.png" auto=format&fit =crop&w =300&q =80" alt="Farmland" alt="Agro-Processing" class="service-img">
+                    <div class="service-info">
+                        <h4>Food Cropg</h4>
+                        <p>Value-addition services ensuring harvested raw goods are neatly packaged, stored, and ready for commercial markets.</p>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <img src="images/PoultryBirds.png" auto=format&fit =crop&w =300&q =80" alt="Farmland" alt="Agro-Processing" class="service-img">
+                    <div class="service-info">
+                        <h4>Healthy Chicken</h4>
+                        <p>Effort in ensuring healthy chicken ready for commercial markets.</p>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <img src="images/PigStock.png" auto=format&fit =crop&w =300&q =80" alt="Farmland" alt="Agro-Processing" class="service-img">
+                    <div class="service-info">
+                        <h4>Healthy Pigs</h4>
+                        <p>Raising pigs as part of our effort on mixed farming to boost farm efficiency and maintain healthy soil .</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <h2 class="section-title">Get in Touch</h2>
+        <div class="contact-container">
+            <div class="contact-info">
+                <h3>Reach Out to Our Farm Team</h3>
+                <p>Interested in bulk purchasing, wholesale supply, or agricultural partnerships? Drop us a line.</p>
+                <p><strong>Email:</strong> info@mofinkemventures.com</p>
+                <p><strong>Phone:</strong> +234 (0) 916 274 9346</p>
+                <p><strong>Location:</strong> Farm Site / Corporate Office</p>
+            </div>
+            <div class="contact-form">
+                <form>
+                    <input type="text" placeholder="Your Name" required>
+                    <input type="email" placeholder="Your Email" required>
+                    <textarea placeholder="Your Message" required></textarea>
+                    <button type="submit" class="btn">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 Mofin-Kem Ventures. All Rights Reserved.</p>
+        <p>Email: info@mofinkemventures.com | Phone: +234(813) 583-1736</p>
+    </footer>
+    <script>
+        const slides = document.querySelectorAll('.hero-slider .slide');
+        const dots = document.querySelectorAll('.slider-dots .dot');
+        let currentIndex = 0;
+        const intervalTime = 5000;
+
+        // 1. Preload images so they never flash blank
+        slides.forEach(slide => {
+            const bgImage = slide.style.backgroundImage;
+            if (bgImage) {
+                const urlMatch = bgImage.match(/url\(['"]?(.*?)['"]?\)/);
+                if (urlMatch && urlMatch[1]) {
+                    const img = new Image();
+                    img.src = urlMatch[1];
+                }
+            }
+        });
+
+        function nextSlide() {
+            slides[currentIndex].classList.remove('active');
+            dots[currentIndex].classList.remove('active');
+
+            currentIndex = (currentIndex + 1) % slides.length;
+
+            slides[currentIndex].classList.add('active');
+            dots[currentIndex].classList.add('active');
+        }
+
+        let slideInterval = setInterval(nextSlide, intervalTime);
+
+        dots.forEach((dot, index) => {
+            dot.addEventListener('click', () => {
+                clearInterval(slideInterval);
+                slides[currentIndex].classList.remove('active');
+                dots[currentIndex].classList.remove('active');
+
+                currentIndex = index;
+
+                slides[currentIndex].classList.add('active');
+                dots[currentIndex].classList.add('active');
+
+                slideInterval = setInterval(nextSlide, intervalTime);
+            });
+        });
+    </script>
+
+</body>
+</html>
+
+
